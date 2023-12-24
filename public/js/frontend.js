@@ -173,7 +173,7 @@ const keys = {
   }
 }
 
-const SPEED = 5
+const SPEED = 1
 const playerInputs = []
 let sequenceNumber = 0
 setInterval(() => {

@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 const backEndPlayers = {}
 const backEndProjectiles = {}
 
-const SPEED = 5
+const SPEED = 1
 const RADIUS = 10
 const PROJECTILE_RADIUS = 5
 let projectileId = 0
