@@ -136,11 +136,30 @@ const pillars = [
 
 
 ];
+let mousePosition = { x: 0, y: 0 };
+window.addEventListener('mousemove', (event) => {
+  const rect = canvas.getBoundingClientRect();
+  mousePosition.x = event.clientX - rect.left;
+  mousePosition.y = event.clientY - rect.top;
+});
+
+
+
+
 let animationId
 function animate() {
   animationId = requestAnimationFrame(animate)
   // c.fillStyle = 'rgba(0, 0, 0, 0.1)'
   c.clearRect(0, 0, canvas.width, canvas.height)
+
+    // Draw crosshair
+    c.beginPath();
+    c.moveTo(mousePosition.x - 10, mousePosition.y);
+    c.lineTo(mousePosition.x + 10, mousePosition.y);
+    c.moveTo(mousePosition.x, mousePosition.y - 10);
+    c.lineTo(mousePosition.x, mousePosition.y + 10);
+    c.strokeStyle = 'red';
+    c.stroke();
 
   for (const id in frontEndPlayers) {
     const frontEndPlayer = frontEndPlayers[id]
