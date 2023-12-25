@@ -125,6 +125,17 @@ socket.on('updatePlayers', (backEndPlayers) => {
   }
 })
 
+// Define the pillarWidth and pillars array after the canvas setup
+const pillarSize = 100; // Define the size of the square pillar
+const pillars = [
+  new Pillar ({ x: 200, y: 50, width: pillarSize, height: pillarSize, color: 'red' }), // left
+  new Pillar ({ x: 800, y: 50, width: pillarSize, height: pillarSize, color: 'red' }), // left
+  new Pillar ({ x: 200, y: 350, width: pillarSize, height: pillarSize, color: 'red' }), // left
+  new Pillar ({ x: 800, y: 350, width: pillarSize, height: pillarSize, color: 'red' }), // left
+
+
+
+];
 let animationId
 function animate() {
   animationId = requestAnimationFrame(animate)
@@ -149,6 +160,7 @@ function animate() {
     const frontEndProjectile = frontEndProjectiles[id]
     frontEndProjectile.draw()
   }
+  pillars.forEach(pillar => pillar.draw())
 
   // for (let i = frontEndProjectiles.length - 1; i >= 0; i--) {
   //   const frontEndProjectile = frontEndProjectiles[i]
@@ -260,3 +272,5 @@ document.querySelector('#usernameForm').addEventListener('submit', (event) => {
     username: document.querySelector('#usernameInput').value
   })
 })
+
+
